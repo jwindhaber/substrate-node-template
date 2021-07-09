@@ -18,6 +18,10 @@ substrate-wasm-builder={version = '4.0.0', git = 'https://github.com/paritytech/
 codec = {default-features = false, features = ['derive'], package = 'parity-scale-codec', version = '2.0.0'}
 hex-literal= {optional = true, version = '0.3.1'}
 
+bpmn-contract = { default-features = false, path = '../../../bpmn/bpmn-contract'}
+pallet-contracts-primitives = { default-features = false, version = '3.0.0', git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-05'}
+#pallet-contracts = { default-features = false, version = '3.0.0', git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-05'}
+
 # Substrate dependencies
 frame-benchmarking = {default-features = false, optional = true, version = '3.1.0', git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-05'}
 frame-executive = {default-features = false, version = '3.0.0', git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-05'}
@@ -62,6 +66,8 @@ runtime-benchmarks = [
 	'sp-runtime/runtime-benchmarks',
 ]
 std = [
+	'bpmn-contract/std',
+    'pallet-contracts-primitives/std',
 	'codec/std',
 	'frame-executive/std',
 	'frame-support/std',
