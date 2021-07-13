@@ -14,3 +14,8 @@
 
 # direnv cache
 .direnv
+
+# Idea
+/.idea/**
+!/.idea/runConfigurations
+*.iml
