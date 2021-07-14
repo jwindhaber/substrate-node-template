@@ -557,4 +557,42 @@ impl_runtime_apis! {
 			Ok(batches)
 		}
 	}
+
+	impl bpmn_contract_rpc_runtime_api::ContractsApi<Block, AccountId, Balance, BlockNumber, Hash>
+    for Runtime
+    {
+        fn call(
+            origin: AccountId,
+            dest: AccountId,
+            value: Balance,
+            gas_limit: u64,
+            input_data: Vec<u8>,
+        ) -> bpmn_contract_primitives::ContractExecResult {
+            Contracts::bare_call(origin, dest, value, gas_limit, input_data)
+        }
+
+        fn instantiate(
+            origin: AccountId,
+            endowment: Balance,
+            gas_limit: u64,
+            code: bpmn_contract_primitives::Code<Hash>,
+            data: Vec<u8>,
+            salt: Vec<u8>,
+        ) -> bpmn_contract_primitives::ContractInstantiateResult<AccountId, BlockNumber> {
+            Contracts::bare_instantiate(origin, endowment, gas_limit, code, data, salt, true)
+        }
+
+        fn get_storage(
+            address: AccountId,
+            key: [u8; 32],
+        ) -> bpmn_contract_primitives::GetStorageResult {
+            Contracts::get_storage(address, key)
+        }
+
+        fn rent_projection(
+            address: AccountId,
+        ) -> bpmn_contract_primitives::RentProjectionResult<BlockNumber> {
+            Contracts::rent_projection(address)
+        }
+    }
 }
