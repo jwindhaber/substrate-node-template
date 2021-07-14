@@ -609,15 +609,14 @@ dependencies = [
 
 [[package]]
 name = "bpmn-contract"
-version = "3.0.0"
+version = "1.0.0"
 dependencies = [
+ "bpmn-contract-primitives",
+ "bpmn-contract-proc-macro",
  "bpmn-rs",
  "frame-support",
  "frame-system",
  "log",
- "pallet-contracts",
- "pallet-contracts-primitives",
- "pallet-contracts-proc-macro",
  "parity-scale-codec",
  "parity-wasm 0.42.2",
  "pwasm-utils 0.17.1",
@@ -628,6 +627,56 @@ dependencies = [
  "sp-sandbox",
  "sp-std",
  "wasmi-validation 0.4.0",
+]
+
+[[package]]
+name = "bpmn-contract-primitives"
+version = "1.0.0"
+dependencies = [
+ "bitflags",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "bpmn-contract-proc-macro"
+version = "1.0.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "bpmn-contract-rpc"
+version = "1.0.0"
+dependencies = [
+ "bpmn-contract-primitives",
+ "bpmn-contract-rpc-runtime-api",
+ "jsonrpc-core",
+ "jsonrpc-core-client",
+ "jsonrpc-derive",
+ "parity-scale-codec",
+ "serde",
+ "sp-api",
+ "sp-blockchain",
+ "sp-core",
+ "sp-rpc",
+ "sp-runtime",
+]
+
+[[package]]
+name = "bpmn-contract-rpc-runtime-api"
+version = "1.0.0"
+dependencies = [
+ "bpmn-contract-primitives",
+ "parity-scale-codec",
+ "sp-api",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -3707,6 +3756,8 @@ dependencies = [
 name = "node-template"
 version = "3.0.0"
 dependencies = [
+ "bpmn-contract",
+ "bpmn-contract-rpc",
  "frame-benchmarking",
  "frame-benchmarking-cli",
  "jsonrpc-core",
@@ -3745,6 +3796,8 @@ name = "node-template-runtime"
 version = "3.0.0"
 dependencies = [
  "bpmn-contract",
+ "bpmn-contract-primitives",
+ "bpmn-contract-rpc-runtime-api",
  "frame-benchmarking",
  "frame-executive",
  "frame-support",
@@ -3754,7 +3807,6 @@ dependencies = [
  "hex-literal",
  "pallet-aura",
  "pallet-balances",
- "pallet-contracts-primitives",
  "pallet-grandpa",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
@@ -3977,51 +4029,6 @@ dependencies = [
  "parity-scale-codec",
  "sp-runtime",
  "sp-std",
-]
-
-[[package]]
-name = "pallet-contracts"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate.git?tag=monthly-2021-05#70ef0afc86cdef0cba09336acffb08bff08540aa"
-dependencies = [
- "frame-support",
- "frame-system",
- "log",
- "pallet-contracts-primitives",
- "pallet-contracts-proc-macro",
- "parity-scale-codec",
- "parity-wasm 0.42.2",
- "pwasm-utils 0.17.1",
- "serde",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-sandbox",
- "sp-std",
- "wasmi-validation 0.4.0",
-]
-
-[[package]]
-name = "pallet-contracts-primitives"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate.git?tag=monthly-2021-05#70ef0afc86cdef0cba09336acffb08bff08540aa"
-dependencies = [
- "bitflags",
- "parity-scale-codec",
- "serde",
- "sp-core",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-contracts-proc-macro"
-version = "3.0.0"
-source = "git+https://github.com/paritytech/substrate.git?tag=monthly-2021-05#70ef0afc86cdef0cba09336acffb08bff08540aa"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
